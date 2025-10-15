@@ -1,0 +1,6 @@
+Activate venv
+
+source venv/Scripts/activate
+
+Navigate to your project directory: Use the cd command to change directories to the root of your project where your virtual environment is located. For example:
+cd C:\Users\YourName\Documents\MyProject
