@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
-#models are a representation of our database schema
+# models are a representation of our database schema
 # Create your models here.
 
 
@@ -40,8 +40,17 @@ class Lead(models.Model):
     # on_delete=models.SET_DEFAULT, default=1 means if the agent is deleted, the lead's agent will be set to the agent with id 1
     
     # Lead won't be associated with a user because it is a record of a potential customer, not a user of the system
+    
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}"
 
 class Agent(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE) #models.OneToOneField means one user can only be linked to one agent, models.ForeignKey means one user can be linked to many agents
     # User already has username, password, email, first_name, last_name fields because it inherits from AbstractUser
-    
+
+    """
+    to change the output from "agent = Agent.objects.create(user=admin_user)
+    agent <Agent: Agent object (1)>:" to something more meaningful and english-like
+    """
+    def __str__(self):
+        return self.user.email
