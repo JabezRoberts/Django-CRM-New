@@ -1,7 +1,8 @@
 from django.urls import path
-from .views import home_page
+from .views import lead_detail, lead_list
 
 app_name = 'leads'
 urlpatterns = [
-    path('all/', home_page) # website.com/leads/all/ will go to the home_page view
+    path('', lead_list), # website.com/leads/all/ will go to the home_page view
+    path('<int:pk>/', lead_detail)
 ]
